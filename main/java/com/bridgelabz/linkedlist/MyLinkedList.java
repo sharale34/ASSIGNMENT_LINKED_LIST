@@ -1,6 +1,7 @@
 package com.bridgelabz.linkedlist;
 
 public class MyLinkedList<K> {
+	private static char[] size;
 	public INode head;
 	public INode tail;
 
@@ -53,19 +54,32 @@ public class MyLinkedList<K> {
 		tempNode = tempNode.getNext();
 		return tempNode;
 	}
-	
+
 	public INode search(K key) {
-    INode tempNode = head;
-    while(tempNode != null && tempNode.getNext() != null)
-    {
-    	if(tempNode.getKey() == key) {
-    		break;
-    	}
-    	tempNode = tempNode.getNext();
-    }
-    if(tempNode.getKey() == key)
-    	return tempNode;
-    else
-    	return null;
+		INode tempNode = head;
+		while (tempNode != null && tempNode.getNext() != null) {
+			if (tempNode.getKey() == key) {
+				break;
+			}
+			tempNode = tempNode.getNext();
+		}
+		if (tempNode.getKey() == key)
+			return tempNode;
+		else
+			return null;
+	}
+
+	public void remove(INode myNode, INode deleteNode) {
+		myNode.setNext(deleteNode.getNext());
+	}
+
+	public int size() {
+		int size = 0;
+		INode tempNode = this.head;
+		while (tempNode.getNext() != null) {
+			size++;
+			tempNode = tempNode.getNext();
+		}
+		return size;
 	}
 }
