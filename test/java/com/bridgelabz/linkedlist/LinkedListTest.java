@@ -73,7 +73,7 @@ public class LinkedListTest {
 		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.tail.equals(mySecondNode);
 		Assert.assertTrue(result);
 	}
-	
+
 	@Test
 	public void given3NumbersWhenSearchElementShouldPassLinkedListResult() {
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
@@ -84,6 +84,22 @@ public class LinkedListTest {
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
 		INode searchNode = myLinkedList.search(30);
-		Assert.assertEquals(mySecondNode , searchNode);
+		Assert.assertEquals(mySecondNode, searchNode);
+	}
+
+	@Test
+	public void given3NumbersWhenInsertingAnotherElementShouldPassLinkedListResult() {
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(40);
+		MyNode<Integer> myFourthNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myFourthNode);
+		myLinkedList.insert(mySecondNode, myThirdNode);
+		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
+				&& mySecondNode.getNext().equals(myThirdNode) && myLinkedList.tail.equals(myFourthNode);
+		Assert.assertTrue(result);
 	}
 }
