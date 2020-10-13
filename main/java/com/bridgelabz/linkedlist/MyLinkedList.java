@@ -82,4 +82,20 @@ public class MyLinkedList<K> {
 		}
 		return size;
 	}
+
+	public <K extends Comparable<K>> void insert(K key) {
+		MyNode newNode = new MyNode(key);
+		INode<K> current = head;
+		INode previous = null;
+		while (current != null && key.compareTo(current.getKey()) > 0) {
+			previous = current;
+			current = current.getNext();
+		}
+		if (previous == null) {
+			head = newNode;
+		} else {
+			previous.setNext(newNode);
+		}
+		newNode.setNext(current);
+	}
 }

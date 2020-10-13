@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class LinkedListTest {
+	private Comparable key;
+
 	@Test
 	public void given3NumbersWhenAddedToLinkedListShouldBeAddedOnTop() {
 		MyNode<Integer> myFirstNode = new MyNode<>(70);
@@ -122,6 +124,21 @@ public class LinkedListTest {
 		Assert.assertTrue(result);
 		int size1 = myLinkedList.size();
 		System.out.println(size1);
-		Assert.assertEquals(expectedSize,size1);
+		Assert.assertEquals(expectedSize, size1);
+	}
+
+	@Test
+	public void given4NumbersWhenSortingShouldPassLinkedListResult() {
+		MyNode<Integer> myFirstNode = new MyNode<>(30);
+		MyNode<Integer> mySecondNode = new MyNode<>(40);
+		MyNode<Integer> myThirdNode = new MyNode<>(56);
+		MyNode<Integer> myFourthNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.insert(myFirstNode.getKey());
+		myLinkedList.insert(mySecondNode.getKey());
+		myLinkedList.insert(myThirdNode.getKey());
+		myLinkedList.insert(myFourthNode.getKey());
+		boolean result = myFirstNode.getKey() <= mySecondNode.getKey() && mySecondNode.getKey() <= myThirdNode.getKey();
+		Assert.assertTrue(result);
 	}
 }
